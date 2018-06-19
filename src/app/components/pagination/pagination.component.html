@@ -1,0 +1,19 @@
+<div class="container" *ngIf="pagination.currentPage > 0">
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="Page navigation example">
+
+        <ul class="pagination justify-content-center">
+          <li class="page-item" >
+            <a class="page-link" *ngIf="pagination.currentPage >= 2" (click)="setPage(pagination.prev)">Previous</a>
+          </li>
+          <li> <span class="page-link">{{pagination.currentPage}}</span> </li>
+          <li class="page-item">
+            <a class="page-link" *ngIf="pagination.currentPage < pagination.paginationSize" (click)="setPage(pagination.next)">Next</a>
+          </li>
+        </ul>
+
+      </nav>
+    </div>
+  </div>
+</div>

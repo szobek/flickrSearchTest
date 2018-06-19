@@ -1,0 +1,8 @@
+<form [formGroup]="searchForm" (submit)="submitForm()">
+  <div class="form-group">
+    <label class="center-block">Tags (separated by a comma)
+      <input class="form-control" formControlName="tags">
+    </label>
+    <button>Search</button>
+  </div>
+</form>

@@ -1,0 +1,24 @@
+
+<div class="card m-2" style="width: 200px;">
+  <img class="img-fluid" [src]="imageParam.flickrUrl" [alt]="imageParam.title">
+  <div class="card-body">
+    <h5 class="card-title">{{imageParam.title}}</h5>
+    <!--<a [href]="imageParam.flickrUrl" target="_blank" class="btn btn-primary">Open in new window</a>-->
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">Open in modal</button>
+  </div>
+</div>
+
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{imageParam.title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img class="img-fluid" [src]="imageParam.flickrUrl" [alt]="imageParam.title">
+  </div>
+</ng-template>

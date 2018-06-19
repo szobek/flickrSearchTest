@@ -1,0 +1,15 @@
+<!--<button (click)="startTestSearch()"> search</button>-->
+
+<app-search-field (tags)="startFormSearch($event)"></app-search-field>
+
+
+<app-pagination [pagination]="pagination" (selected-page)="setPage($event)"></app-pagination>
+
+<div class="container">
+    <div class="d-flex justify-content-center flex-wrap" >
+        <app-image-card [image-param]="image" *ngFor="let image of flickrImages"></app-image-card>
+    </div>
+</div>
+
+
+<app-pagination [pagination]="pagination" (selected-page)="setPage($event)"></app-pagination>
