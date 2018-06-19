@@ -10,17 +10,20 @@ import {FlickrImage} from '../models/flickr-image';
 })
 export class SearchComponent implements OnDestroy {
 
-
     flickrImages: Array<FlickrImage> = [];
     pagination;
     tags: Array<string> = [];
     searchResultSubscribe;
+    loaderSubscribe;
+    loader: boolean;
 
 
     constructor(private searchService: SearchService) {
         this.searchResultSubscribe = this.searchService.searchResult$.subscribe(imgArr => {
             this.flickrImages = imgArr;
         });
+
+        this.loaderSubscribe = this.searchService.loader$.subscribe(bool => this.loader = bool);
 
         this.pagination = {
             paginationSize: 0,
@@ -37,6 +40,8 @@ export class SearchComponent implements OnDestroy {
     }
 
     startSearch( page: number = 1) {
+
+        this.searchService.loader$.next(true);
 
         this.searchService.callSearch(this.tags, page)
 
@@ -56,6 +61,7 @@ export class SearchComponent implements OnDestroy {
                 },
                 () => {
                     // console.log('complete call');
+                    this.searchService.loader$.next(false);
                 }
             );
     }

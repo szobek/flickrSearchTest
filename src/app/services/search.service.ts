@@ -13,10 +13,15 @@ export class SearchService {
     searchResult$: BehaviorSubject<Array<FlickrImage>> = new BehaviorSubject<Array<FlickrImage>>([]);
     searchResult: Array<FlickrImage> = [];
 
+    loader$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    loader: boolean;
+
     apiKey: string;
 
     constructor(private http: HttpClient) {
         this.apiKey = environment.flickrApiKey;
+        this.loader = false;
+
 
     }
 

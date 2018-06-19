@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {SearchService} from './services/search.service';
-import {FlickrImage} from './components/models/flickr-image';
-import {map} from 'rxjs/internal/operators';
 
 @Component({
     selector: 'app-root',
@@ -10,8 +8,10 @@ import {map} from 'rxjs/internal/operators';
 })
 export class AppComponent {
 
-    constructor(private searchService: SearchService) {
+    loader: boolean = false;
 
+    constructor(private searchService: SearchService) {
+        this.searchService.loader$.subscribe(bool => this.loader = bool);
     }
 
 

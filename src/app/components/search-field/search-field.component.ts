@@ -53,4 +53,8 @@ export class SearchFieldComponent {
         this.brands = this.types[evt.target.selectedIndex].brand;
     }
 
+    resetForm() {
+        this.searchForm.reset();
+    }
+
 }
