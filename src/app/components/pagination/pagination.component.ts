@@ -5,10 +5,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
 
-
-    selectedPage: number;
     pagination;
 
     @Input('pagination') set paginationObject(pagination) {
@@ -20,9 +18,6 @@ export class PaginationComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
-        console.log('a page', this.selectedPage);
-    }
 
     setPage(pageNum: number) {
         this.newPage.emit(pageNum);

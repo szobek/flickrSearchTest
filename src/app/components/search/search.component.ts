@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 import {SearchService} from '../../services/search.service';
-import {map} from 'rxjs/internal/operators';
+
 import {FlickrImage} from '../models/flickr-image';
 
 @Component({
@@ -39,7 +39,7 @@ export class SearchComponent implements OnDestroy {
     startSearch( page: number = 1) {
 
         this.searchService.callSearch(this.tags, page)
-            .pipe(map((res: any) => res))
+
             .subscribe(
                 (res: any) => {
 
@@ -47,18 +47,15 @@ export class SearchComponent implements OnDestroy {
                     this.pagination.paginationSize = res.photos.pages;
                     this.pagination.next = (res.photos.page < res.photos.pages) ? res.photos.page + 1 : null;
                     this.pagination.prev = (res.photos.page > 1) ? res.photos.page - 1 : 1;
-
-
                     const arr = res.photos.photo.map(image => new FlickrImage(image));
                     this.searchService.searchResult$.next(arr);
 
-                    console.log('a pagination:', this.pagination);
                 },
                 (error: any) => {
                     console.log('a service error', error);
                 },
                 () => {
-                    console.log('complete call');
+                    // console.log('complete call');
                 }
             );
     }

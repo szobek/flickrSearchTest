@@ -3,6 +3,7 @@ import {BehaviorSubject} from 'rxjs/index';
 import {FlickrImage} from '../components/models/flickr-image';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {map} from 'rxjs/internal/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,6 @@ export class SearchService {
     }
 
     public callSearch(tagArray: Array<any>, page) {
-        return this.http.get(`${this.createCallUrl(tagArray, page)}`);
+        return this.http.get(`${this.createCallUrl(tagArray, page)}`).pipe(map((res: any) => res));
     }
 }

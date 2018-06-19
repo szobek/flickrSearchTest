@@ -1,8 +1,36 @@
 <form [formGroup]="searchForm" (submit)="submitForm()">
-  <div class="form-group">
-    <label class="center-block">Tags (separated by a comma)
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6 offset-3">
+      <label class="center-block">Tags (separated by a comma)
+      </label>
       <input class="form-control" formControlName="tags">
-    </label>
-    <button>Search</button>
+    </div>
   </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-3 offset-3">
+      <select class="form-control" formControlName="vehicleType" (change)="change($event)">
+        <option *ngFor="let type of types" [ngValue]="type.type" >
+          {{ type.type }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-3">
+      <select class="form-control" formControlName="brand">
+        <option *ngFor="let brand of brands" [ngValue]="brand.name">
+          {{ brand.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-12 text-center">
+
+      <button class="btn btn-dark">Search</button>
+    </div>
+  </div>
+
+
 </form>

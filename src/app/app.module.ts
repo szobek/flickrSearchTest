@@ -13,8 +13,12 @@ import { ModalModule } from 'ngx-bootstrap';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SearchFieldComponent } from './components/search-field/search-field.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 export const routes = [
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'kereses', component: SearchComponent}
 ];
 
@@ -26,6 +30,8 @@ export const routes = [
         ImageCardComponent,
         PaginationComponent,
         SearchFieldComponent,
+        HomeComponent,
+        AboutComponent,
     ],
     imports: [
         BrowserModule,
