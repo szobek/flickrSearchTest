@@ -19,7 +19,8 @@ import { AboutComponent } from './components/about/about.component';
 export const routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'kereses', component: SearchComponent}
+    {path: 'kereses', component: SearchComponent},
+    {path: 'about', component: AboutComponent}
 ];
 
 @NgModule({

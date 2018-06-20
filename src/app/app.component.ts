@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {SearchService} from './services/search.service';
 
 @Component({
@@ -7,6 +7,8 @@ import {SearchService} from './services/search.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
 
     loader: boolean = false;
 

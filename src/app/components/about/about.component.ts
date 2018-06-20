@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
 
-  constructor() { }
+    keyHit: number = 0;
+    timeout;
 
-  ngOnInit() {
-  }
+    @HostListener('document:keydown', ['$event'])
+    keyEvent(event: Event) {
+        if (event.key === 'Control') {
+
+            clearInterval(this.timeout);
+
+            this.keyHit++;
+
+            if(this.keyHit === 5) location.href = 'http://szobekweb.hu';
+
+            this.timeout = setTimeout(() => {
+                this.keyHit = 0;
+            }, 500);
+
+        }
+
+    }
+
 
 }

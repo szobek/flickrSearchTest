@@ -1,10 +1,9 @@
 
 <div class="card m-2" style="width: 200px;">
-  <img class="img-fluid" [src]="imageParam.flickrUrl" [alt]="imageParam.title">
+  <img class="img-fluid" [src]="imageParam.flickrUrl" [alt]="imageParam.title" (click)="openModal(template)">
   <div class="card-body">
     <h5 class="card-title">{{imageParam.title}}</h5>
-    <!--<a [href]="imageParam.flickrUrl" target="_blank" class="btn btn-primary">Open in new window</a>-->
-    <button type="button" class="btn btn-primary" (click)="openModal(template)">Open in modal</button>
+
   </div>
 </div>
 

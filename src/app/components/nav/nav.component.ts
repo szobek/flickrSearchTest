@@ -1,19 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener } from '@angular/core';
 
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
-
+export class NavComponent {
 
     isCollapsed = true;
 
-    constructor() {
+    @HostListener('document:click', ['$event'])
+    preventEmptyHrefNav(event: Event) {
+        let isCollapseButton = false;
+        event.path.map(dom => {
+            if(dom.classList && dom.classList[0] === 'navbar-toggler') isCollapseButton = true;
+        });
+        if(!isCollapseButton) this.isCollapsed = true;
+
     }
 
-    ngOnInit() {
-    }
+
 
 }
