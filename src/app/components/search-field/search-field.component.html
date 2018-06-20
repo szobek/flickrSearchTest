@@ -4,7 +4,7 @@
       <form [formGroup]="searchForm" (submit)="submitForm()">
 
         <div class="form-row">
-          <div class="form-group col-md-6 offset-3">
+          <div class="form-group col-md-6 offset-md-3">
             <label class="center-block">Tags (separated by a comma)
             </label>
             <input class="form-control" formControlName="tags">
@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-3 offset-3">
+          <div class="form-group col-md-3 offset-md-3">
             <select class="form-control" formControlName="vehicleType" (change)="change($event)">
               <option *ngFor="let type of types" [ngValue]="type.type" >
                 {{ type.type }}

@@ -55,6 +55,7 @@ export class SearchFieldComponent {
 
     resetForm() {
         this.searchForm.reset();
+        this.searchForm.controls.vehicleType.setValue(this.types[0].type);
     }
 
 }
