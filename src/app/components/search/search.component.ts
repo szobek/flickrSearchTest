@@ -39,7 +39,7 @@ export class SearchComponent implements OnDestroy {
         this.startSearch();
     }
 
-    startSearch( page: number = 1) {
+    startSearch(page: number = 1) {
 
         this.searchService.loader$.next(true);
 
@@ -52,6 +52,7 @@ export class SearchComponent implements OnDestroy {
                     this.pagination.paginationSize = res.photos.pages;
                     this.pagination.next = (res.photos.page < res.photos.pages) ? res.photos.page + 1 : null;
                     this.pagination.prev = (res.photos.page > 1) ? res.photos.page - 1 : 1;
+                    this.pagination.pages = this.generatePageLink(res.photos.page);
                     const arr = res.photos.photo.map(image => new FlickrImage(image));
                     this.searchService.searchResult$.next(arr);
 
@@ -76,6 +77,19 @@ export class SearchComponent implements OnDestroy {
         this.flickrImages = [];
     }
 
+
+    generatePageLink(current) {
+
+        // ez a kettővel előrrébb
+        const second = (current >= 3) ? current - 2 : null;
+        // ez az eggyel előrrébb
+        const first = (current >= 2) ? current - 1 : null;
+
+        const third = ((this.pagination.paginationSize - current) >= 1) ? current + 1 : null;
+        const fourth = ((this.pagination.paginationSize - current) >= 2) ? current + 2 : null;
+
+        return [second, first, current, third, fourth];
+    }
 
 
 }

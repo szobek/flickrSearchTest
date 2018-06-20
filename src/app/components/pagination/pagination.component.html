@@ -7,7 +7,15 @@
           <li class="page-item" >
             <a class="page-link" *ngIf="pagination.currentPage >= 2" (click)="setPage(pagination.prev)">Previous</a>
           </li>
-          <li> <span class="page-link">{{pagination.currentPage}}</span> </li>
+
+          <!--<li> <span class="page-link" >{{pagination.currentPage}}</span> </li>-->
+
+          <ng-container *ngFor="let page of pagination.pages">
+            <li *ngIf="page !== null" class="page-item" [ngClass]="{active: page === pagination.currentPage}"> <span (click)="setPage(page)" class="page-link">{{page}}</span> </li>
+          </ng-container>
+
+
+
           <li class="page-item">
             <a class="page-link" *ngIf="pagination.currentPage < pagination.paginationSize" (click)="setPage(pagination.next)">Next</a>
           </li>

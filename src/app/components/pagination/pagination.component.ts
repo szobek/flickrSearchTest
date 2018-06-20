@@ -10,7 +10,9 @@ export class PaginationComponent {
     pagination;
 
     @Input('pagination') set paginationObject(pagination) {
+
         this.pagination = pagination;
+        console.log('a pagination:', pagination)
     }
 
     @Output('selected-page')  newPage: EventEmitter<number> = new EventEmitter<number>();
