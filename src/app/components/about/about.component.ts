@@ -11,7 +11,7 @@ export class AboutComponent {
     timeout;
 
     @HostListener('document:keydown', ['$event'])
-    keyEvent(event: Event) {
+    keyEvent(event: any) {
         if (event.key === 'Control') {
 
             clearInterval(this.timeout);

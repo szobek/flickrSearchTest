@@ -10,7 +10,7 @@ export class NavComponent {
     isCollapsed = true;
 
     @HostListener('document:click', ['$event'])
-    preventEmptyHrefNav(event: Event) {
+    preventEmptyHrefNav(event: any) {
         let isCollapseButton = false;
         event.path.map(dom => {
             if(dom.classList && dom.classList[0] === 'navbar-toggler') isCollapseButton = true;
